@@ -14,6 +14,7 @@ public class SceneSwitchManager : MonoBehaviour
 	#endregion
 
 	#region Public Fields
+	public LevelsDataBase LDB;
 	#endregion
 
 	#region Private Fields
@@ -25,7 +26,7 @@ public class SceneSwitchManager : MonoBehaviour
 	#region Public Methods
 	public void LoadGame()
     {
-		LoadScene("Level1");
+		LoadScene(LDB.LevelsPaths[0]);
     }
 	#endregion
 

@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fd7a2149ca71148bf9f0ba6fd21aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LDB: {fileID: 11400000, guid: 83729ca2df642ac42b8321c9f854b279, type: 2}
 --- !u!4 &550219902
 Transform:
   m_ObjectHideFlags: 0
@@ -292,7 +293,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 550219901}
-        m_MethodName: Lol
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
