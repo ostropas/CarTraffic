@@ -4,12 +4,12 @@ using System.Linq;
 using UnityEngine;
 using static WayPointSystem;
 
-public class CarAgent : MonoBehaviour
+[RequireComponent(typeof(CarSight))]
+public class CarMovement : MonoBehaviour
 {
     #region Initialization
     void Awake()
     {
-
     }
     #endregion
 
@@ -18,6 +18,7 @@ public class CarAgent : MonoBehaviour
     public float CheckTurnDistance;
     public WayPoint StartWayPoint;
     public WayPointSystem WayPointSystem;
+    public bool IsMoving;
     #endregion
 
     #region Private Fields
@@ -30,18 +31,26 @@ public class CarAgent : MonoBehaviour
 
     void Start()
     {
-        _path = WayPointSystem.GetAllPathForWaypoint(StartWayPoint)[1];
+        _path = WayPointSystem.GetAllPathForWaypoint(StartWayPoint)[0];
         _rotationProgress = 0;
         _finalRotation = transform.eulerAngles;
         _startRotation = transform.eulerAngles;
+
+        var cs = GetComponent<CarSight>();
+        cs.TrafficLightDetected += CheckTrafficLight;
     }
 
     void Update()
     {
-        MoveOverThePath();
+        if (IsMoving)
+            MoveOverThePath();
     }
 
     #region Public Methods
+    public void CheckTrafficLight(TrafficLight tl)
+    {
+        IsMoving = tl.CurrentAvailablePath == TrafficLight.AvailablePath.ZAvailable;
+    }
     #endregion
 
     #region Private Methods
@@ -49,8 +58,9 @@ public class CarAgent : MonoBehaviour
     {
         // Move forward
         transform.position = Vector3.MoveTowards(transform.position, _path[_nextWayPointIndex].transform.position, MoveSpeed * Time.deltaTime);
-                
-        if (Vector3.Distance(transform.position, _path[_nextWayPointIndex].transform.position) < CheckTurnDistance && _rotationProgress == 0f) {
+
+        if (Vector3.Distance(transform.position, _path[_nextWayPointIndex].transform.position) < CheckTurnDistance && _rotationProgress == 0f)
+        {
             if (_nextWayPointIndex != _path.Count - 1)
             {
                 var currentWayPoint = _path[_nextWayPointIndex];
@@ -64,7 +74,7 @@ public class CarAgent : MonoBehaviour
                 _rotationProgress = 0;
             }
         }
-        
+
         if (transform.eulerAngles != _finalRotation)
         {
             _rotationProgress += Time.deltaTime * 20;

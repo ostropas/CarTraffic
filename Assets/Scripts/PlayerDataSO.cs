@@ -13,4 +13,5 @@ public class PlayerData
 {
     public int Hp;
     public string kek;
+    public string lel;
 }

@@ -14,6 +14,7 @@ public class DataManager : MonoBehaviour
 		_playerDataFilename = Path.Combine(Application.persistentDataPath, _playerDataFilename);
 
 		InitPlayerData();
+		DontDestroyOnLoad(gameObject);
 	}
 	#endregion
 
