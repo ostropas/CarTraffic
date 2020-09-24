@@ -36,8 +36,8 @@ public class CarMovement : MonoBehaviour
         _finalRotation = transform.eulerAngles;
         _startRotation = transform.eulerAngles;
 
-        var cs = GetComponent<CarSight>();
-        cs.TrafficLightDetected += CheckTrafficLight;
+        //var cs = GetComponent<CarSight>();
+        //cs.TrafficLightDetected += CheckTrafficLight;
     }
 
     void Update()

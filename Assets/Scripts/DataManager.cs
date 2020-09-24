@@ -1,46 +1,41 @@
-﻿using System.Collections;
+﻿using ScriptableObjectArchitecture;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
-public class DataManager : MonoBehaviour
+public class DataManager : MonoBehaviour, IGameEventListener
 {
-	private string _playerDataFilename = "data.bin";
+    public VaribleCollection PlayerData;
 
-	#region Initialization
-	void Awake()
-	{
-		_playerDataFilename = Path.Combine(Application.persistentDataPath, _playerDataFilename);
-
-		InitPlayerData();
-		DontDestroyOnLoad(gameObject);
-	}
-	#endregion
-
-	#region Public Fields
-	public LevelsDataBase LevelsDataBase;
-	public PlayerData PlayerData;
-	[SerializeField]
-	private PlayerDataSO _defaultPlayerData;
-	#endregion
-
-	private void InitPlayerData()
+    public void Awake()
     {
-		BinaryFormatter bf = new BinaryFormatter();
-
-        FileStream dataFile;
-        if (File.Exists(_playerDataFilename))
+        DontDestroyOnLoad(this);
+        foreach (var data in PlayerData)
         {
-			dataFile = File.OpenRead(_playerDataFilename);
+            data.AddListener(this);
+            SaveVaribles(data);
+        }
+    }
 
-			PlayerData = (PlayerData)bf.Deserialize(dataFile);
-		} else
-        {
-			dataFile = File.Create(_playerDataFilename);
+    public void OnDestroy()
+    {
+        
+    }
 
-			PlayerData = _defaultPlayerData.PD;
-			bf.Serialize(dataFile, PlayerData);
-		}
+    private void LoadVaribles()
+    {
+
+    }
+
+    public void SaveVaribles(BaseVariable variable)
+    {
+        var jsonString = JsonUtility.ToJson(variable.BaseValue);
+        Debug.Log(jsonString);
+    }
+
+    public void OnEventRaised()
+    {
+        //throw new System.NotImplementedException();
     }
 }

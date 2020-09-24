@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using ScriptableObjectArchitecture;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TitleScript : MonoBehaviour
 {
 	#region Public Fields
-	public GameEvent LoadGameEvent;
+	public GameEventBase LoadGame;
 	#endregion
 
 	#region Private Fields
@@ -14,6 +15,6 @@ public class TitleScript : MonoBehaviour
 	IEnumerator Start()
 	{
 		yield return new WaitForSeconds(1f);
-		LoadGameEvent.Raise();
+		LoadGame.Raise();
 	}
 }

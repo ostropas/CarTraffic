@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafe3d488dbf257449cf72a774c0ea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadGameEvent: {fileID: 11400000, guid: 9d14f66bf3c5b534cb9be58260f5186b, type: 2}
+  LoadGame: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4, type: 2}
 --- !u!4 &59764002
 Transform:
   m_ObjectHideFlags: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fd7a2149ca71148bf9f0ba6fd21aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LDB: {fileID: 11400000, guid: 83729ca2df642ac42b8321c9f854b279, type: 2}
+  Scenes: {fileID: 11400000, guid: 28a30e27711ecfd4cafb7d562e447dd7, type: 2}
 --- !u!4 &550219902
 Transform:
   m_ObjectHideFlags: 0
@@ -285,19 +285,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 550219900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 669320fc183c156449a463c21d3e9c36, type: 3}
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 9d14f66bf3c5b534cb9be58260f5186b, type: 2}
-  Response:
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4,
+    type: 2}
+  _event: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4, type: 2}
+  _response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 550219901}
-        m_MethodName: LoadGame
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: ScriptableObjectArchitecture.IntVariable,
+            ScriptableObject-Architecture
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -518,6 +525,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &940506198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940506200}
+  - component: {fileID: 940506199}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &940506199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940506198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84df158433aec32449a387f4da769661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerData: {fileID: 11400000, guid: 6fc9668f1e106ce44bcd69650a1dd2c5, type: 2}
+--- !u!4 &940506200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940506198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 538.0039, y: 891.0993, z: -1217.511}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2052599900
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,10 +675,10 @@ RectTransform:
   m_Father: {fileID: 682685302}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 844.4464, y: 240.80951}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.00018310547, y: 0}
+  m_SizeDelta: {x: -0.0004272461, y: -95.19049}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2057743665
 MonoBehaviour:
