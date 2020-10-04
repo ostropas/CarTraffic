@@ -80,9 +80,28 @@ namespace ScriptableObjectArchitecture
         [SerializeField]
         protected bool _isClamped = false;
         [SerializeField]
+        protected bool _isSavable = false;
+        [SerializeField]
         protected T _minClampedValue = default(T);
         [SerializeField]
         protected T _maxClampedValue = default(T);
+
+        private void OnValidate()
+        {
+            var pd = Resources.Load<Collection<BaseVariable>>("PlayerDataVariblesCollection");
+
+            if (pd.Contains(this) && !_isSavable)
+            {
+                pd.Remove(this);
+                return;
+            }
+
+            if (!pd.Contains(this) && _isSavable)
+            {
+                pd.Add(this);
+                return;
+            }
+        }
 
         public virtual T SetValue(BaseVariable<T> value)
         {

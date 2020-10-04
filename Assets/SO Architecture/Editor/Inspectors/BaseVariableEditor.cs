@@ -15,11 +15,12 @@ namespace ScriptableObjectArchitecture.Editor
         private SerializedProperty _readOnly;
         private SerializedProperty _raiseWarning;
         private SerializedProperty _isClamped;
+        private SerializedProperty _isSavable;
         private SerializedProperty _minValueProperty;
         private SerializedProperty _maxValueProperty;
         private AnimBool _raiseWarningAnimation;
         private AnimBool _isClampedVariableAnimation;
-        
+
         private const string READONLY_TOOLTIP = "Should this value be changable during runtime? Will still be editable in the inspector regardless";
 
         protected virtual void OnEnable()
@@ -28,6 +29,7 @@ namespace ScriptableObjectArchitecture.Editor
             _readOnly = serializedObject.FindProperty("_readOnly");
             _raiseWarning = serializedObject.FindProperty("_raiseWarning");
             _isClamped = serializedObject.FindProperty("_isClamped");
+            _isSavable = serializedObject.FindProperty("_isSavable");
             _minValueProperty = serializedObject.FindProperty("_minClampedValue");
             _maxValueProperty = serializedObject.FindProperty("_maxClampedValue");
 
@@ -45,6 +47,7 @@ namespace ScriptableObjectArchitecture.Editor
 
             EditorGUILayout.Space();
 
+            DrawSavableFields();
             DrawClampedFields();
             DrawReadonlyField();
         }
@@ -52,6 +55,12 @@ namespace ScriptableObjectArchitecture.Editor
         {
             GenericPropertyDrawer.DrawPropertyDrawerLayout(_valueProperty, Target.Type);
         }
+
+        protected void DrawSavableFields()
+        {
+            EditorGUILayout.PropertyField(_isSavable);
+        }
+
         protected void DrawClampedFields()
         {
             if (!IsClampable)

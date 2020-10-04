@@ -20,5 +20,5 @@ MonoBehaviour:
     _sceneIndex: 0
     _isSceneEnabled: 1
   - _sceneName: Assets/Scenes/Level2.unity
-    _sceneIndex: -1
+    _sceneIndex: 2
     _isSceneEnabled: 1
