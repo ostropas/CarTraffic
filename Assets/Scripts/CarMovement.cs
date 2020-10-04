@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ScriptableObjectArchitecture;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class CarMovement : MonoBehaviour
     public WayPoint StartWayPoint;
     public WayPointSystem WayPointSystem;
     public bool IsMoving;
+    public IntVariable CurrentScene;
     #endregion
 
     #region Private Fields
@@ -35,9 +37,17 @@ public class CarMovement : MonoBehaviour
         _rotationProgress = 0;
         _finalRotation = transform.eulerAngles;
         _startRotation = transform.eulerAngles;
+        StartCoroutine(K());
+
 
         //var cs = GetComponent<CarSight>();
         //cs.TrafficLightDetected += CheckTrafficLight;
+    }
+
+    IEnumerator K()
+    {
+        yield return new WaitForSeconds(3);
+        CurrentScene.Value++;
     }
 
     void Update()

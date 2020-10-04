@@ -1532,7 +1532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1671023019509844015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1550,7 +1550,6 @@ MonoBehaviour:
   StartWayPoint: {fileID: 2014437190}
   WayPointSystem: {fileID: 20786468}
   IsMoving: 1
-  CurrentScene: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4, type: 2}
 --- !u!33 &1704261099613981946
 MeshFilter:
   m_ObjectHideFlags: 0
