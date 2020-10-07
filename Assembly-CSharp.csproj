@@ -60,11 +60,13 @@
     <Compile Include="Assets\Scripts\WayPointSystem.cs" />
     <Compile Include="Assets\Scripts\WayPoint.cs" />
     <Compile Include="Assets\Scripts\DataManager.cs" />
+    <Compile Include="Assets\Scripts\CarSpawner.cs" />
     <Compile Include="Assets\Scripts\CarMovement.cs" />
     <Compile Include="Assets\Scripts\TrafficLight.cs" />
     <Compile Include="Assets\Scripts\CarSight.cs" />
     <Compile Include="Assets\Scripts\SceneSwitchManager.cs" />
     <Compile Include="Assets\ArchitectureExtensions\Collections\VaribleCollection.cs" />
+    <Compile Include="Assets\Scripts\OffMeshMover.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -691,6 +693,14 @@
     <ProjectReference Include="ScriptableObject-Architecture.Editor.csproj">
       <Project>{A0A89A64-2FEF-BEBD-9A49-24828C88C27D}</Project>
       <Name>ScriptableObject-Architecture.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{34D60C7E-8D72-A8FE-1A95-407724ED8642}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{234C962C-3CCE-9289-6C7A-5650B85C50EE}</Project>
+      <Name>NavMeshComponentsEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

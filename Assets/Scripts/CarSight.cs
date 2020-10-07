@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class CarSight : MonoBehaviour
 {
-    public event Action<TrafficLight> TrafficLightDetected;
+    public UnityEvent<GameObject> ObjectInView;
 
-    public int ViewDistance = 100;
+    private GameObject _objectInView = null;
+
+    public float ViewDistance = 10f;
+    public float ViewOffset = 1f;
 
     private void Awake()
     {
@@ -23,20 +27,29 @@ public class CarSight : MonoBehaviour
     //Detect perspective field of view for the AI Character
     void DetectObjects()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out var hit, ViewDistance))
+        if (Physics.Raycast(transform.position + transform.forward * ViewOffset, transform.forward, out var hit, ViewDistance) && !hit.collider.isTrigger)
         {
-            var tl = hit.transform.gameObject.GetComponent<TrafficLight>();
-
-            if (tl)
-                TrafficLightDetected.Invoke(tl);
+            if (!_objectInView)
+            {
+                ObjectInView.Invoke(hit.transform.gameObject);
+                _objectInView = hit.transform.gameObject;
+            }
+        } else
+        {
+            if (_objectInView)
+            {
+                ObjectInView.Invoke(null);
+                _objectInView = null;
+            }
         }
+        
     }
 
     void OnDrawGizmos()
     {
 
         Gizmos.color = Color.green;
-        DrawLine(transform.position, transform.position + transform.forward * ViewDistance, 4);
+        DrawLine(transform.position + transform.forward * ViewOffset, transform.position + transform.forward * ViewDistance + transform.forward * ViewOffset, 4);
     }
 
     public static void DrawLine(Vector3 p1, Vector3 p2, float width)

@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using static WayPointSystem;
 
-[RequireComponent(typeof(CarSight))]
 public class CarMovement : MonoBehaviour
 {
     #region Initialization
@@ -25,58 +25,107 @@ public class CarMovement : MonoBehaviour
 
     #region Private Fields
     private int _nextWayPointIndex = 1;
-    private List<WayPoint> _path;
+    private List<Vector3> _path;
     private Vector3 _finalRotation;
     private Vector3 _startRotation;
     private float _rotationProgress;
+    private int _curLine = 0;
+    private float _lineWidth = 2.5f;
     #endregion
+
+    NavMeshAgent _nva;
 
     void Start()
     {
-        _path = WayPointSystem.GetAllPathForWaypoint(StartWayPoint)[0];
-        _rotationProgress = 0;
-        _finalRotation = transform.eulerAngles;
-        _startRotation = transform.eulerAngles;
-        StartCoroutine(K());
+        //var path = WayPointSystem.GetRandomPath(StartWayPoint);
+
+        //_path = new List<Vector3>();
+
+        //for (int i = 0; i < path.Count; i++)
+        //{
+        //    _path.Add(path[i].Start.transform.position);
+        //}
+        //_path.Add(path.Last().Finish.transform.position);
+
+        //_rotationProgress = 0;
+        //_finalRotation = transform.eulerAngles;
+        //_startRotation = transform.eulerAngles;
 
 
-        //var cs = GetComponent<CarSight>();
-        //cs.TrafficLightDetected += CheckTrafficLight;
-    }
 
-    IEnumerator K()
-    {
-        yield return new WaitForSeconds(3);
-        CurrentScene.Value++;
+        //var startPos = _path[0];
+
+        //startPos += transform.right * _curLine * _lineWidth;
+
+        //transform.position = startPos;
+
+        _nva = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out var hit, 1000f))
+            {
+                _nva.SetDestination(hit.point);
+                var path = new NavMeshPath();
+                //path.corners
+                //NavMesh.CalculatePath()                    
+            }
+        } 
+
+        return;
+
         if (IsMoving)
             MoveOverThePath();
     }
 
     #region Public Methods
-    public void CheckTrafficLight(TrafficLight tl)
+    public void ObjectDetected(GameObject go)
     {
-        IsMoving = tl.CurrentAvailablePath == TrafficLight.AvailablePath.ZAvailable;
+        IsMoving = go == null;
     }
     #endregion
 
+    private Vector3? _nextPos;
     #region Private Methods
     private void MoveOverThePath()
     {
-        // Move forward
-        transform.position = Vector3.MoveTowards(transform.position, _path[_nextWayPointIndex].transform.position, MoveSpeed * Time.deltaTime);
+        if (_nextPos == null)
+        {
+            _nextPos = _path[_nextWayPointIndex];
+            _nextPos -= transform.forward * _curLine * _lineWidth;
+            _nextPos += transform.right * _curLine * _lineWidth;
+        }
 
-        if (Vector3.Distance(transform.position, _path[_nextWayPointIndex].transform.position) < CheckTurnDistance && _rotationProgress == 0f)
+        var nextPos = _nextPos.Value;
+
+        // Move forward
+        transform.position = Vector3.MoveTowards(transform.position, nextPos, MoveSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, nextPos) < CheckTurnDistance && _rotationProgress == 0f)
         {
             if (_nextWayPointIndex != _path.Count - 1)
             {
-                var currentWayPoint = _path[_nextWayPointIndex];
-                var nextWayPoint = _path[_nextWayPointIndex + 1];
+                var currentWayPoint = nextPos;
 
-                var diff = currentWayPoint.transform.position - nextWayPoint.transform.position;
+                var nextWayPoint = _path[_nextWayPointIndex + 1];
+                var xDiff = Mathf.Abs(currentWayPoint.x - nextWayPoint.x);
+                var zDiff = Mathf.Abs(currentWayPoint.z - nextWayPoint.z);
+
+                if (xDiff > zDiff)
+                {
+                    nextWayPoint.z = currentWayPoint.z;
+                }
+                else
+                {
+                    nextWayPoint.x = currentWayPoint.x;
+                }
+
+                var diff = currentWayPoint - nextWayPoint;
                 diff.Normalize();
 
                 _finalRotation = new Vector3(0f, diff.x * -90f, 0f);
@@ -92,9 +141,10 @@ public class CarMovement : MonoBehaviour
             transform.eulerAngles = Vector3.Lerp(_startRotation, _finalRotation, _rotationProgress);
         }
 
-        if (transform.position == _path[_nextWayPointIndex].transform.position)
+        if (transform.position == nextPos)
         {
             _nextWayPointIndex++;
+            _nextPos = null;
             if (_nextWayPointIndex == _path.Count)
                 Destroy(gameObject);
         }

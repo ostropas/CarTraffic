@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
-    public int Id;
+    public bool OnEdge;
+
+    public List<WayPoint> PrevPoints;
+    public List<WayPoint> NextPoints;
 
     void OnDrawGizmosSelected()
     {
