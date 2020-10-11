@@ -27,8 +27,13 @@ public class CarSight : MonoBehaviour
     //Detect perspective field of view for the AI Character
     void DetectObjects()
     {
-        if (Physics.Raycast(transform.position + transform.forward * ViewOffset, transform.forward, out var hit, ViewDistance) && !hit.collider.isTrigger)
+        var ray = new Ray(transform.position + transform.forward * ViewOffset, transform.forward);
+        Debug.DrawRay(transform.position + transform.forward * ViewOffset, transform.forward, Color.red);
+        if (Physics.Raycast(transform.position + transform.forward * ViewOffset, transform.forward, out var hit, ViewDistance))
         {
+            if (hit.collider.isTrigger)
+                return;
+
             if (!_objectInView)
             {
                 ObjectInView.Invoke(hit.transform.gameObject);
@@ -47,7 +52,6 @@ public class CarSight : MonoBehaviour
 
     void OnDrawGizmos()
     {
-
         Gizmos.color = Color.green;
         DrawLine(transform.position + transform.forward * ViewOffset, transform.position + transform.forward * ViewDistance + transform.forward * ViewOffset, 4);
     }

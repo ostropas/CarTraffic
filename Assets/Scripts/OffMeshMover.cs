@@ -38,10 +38,11 @@ public class OffMeshMover : MonoBehaviour
         endPos.y = 0;
         float duration = (endPos - startPos).magnitude / _navMeshAgent.velocity.magnitude;
         float t = 0.0f;
-        float tStep = 1.0f / duration;
+        float tStep = 1.0f / duration;        
         while (t < 1.0f)
         {
             transform.position = Vector3.Lerp(startPos, endPos, t);
+            transform.LookAt(endPos);
             _navMeshAgent.destination = transform.position;
             t += tStep * Time.deltaTime;
             yield return null;
