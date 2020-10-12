@@ -1,13 +1,12 @@
 using ScriptableObjectArchitecture;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class CameraMover : MonoBehaviour
 {
     public IntVariable HoldDelay;
-    public float MoveSpeed;
+    public Transform MinPos;
+    public Transform MaxPos;
 
     private Vector3 _cameraStartDragPosition;
     private Vector3 _mouseStartDragPosition;
@@ -24,6 +23,7 @@ public class CameraMover : MonoBehaviour
 
     public void Update()
     {
+        // Delay before start drag
         if (_clicked)
             _holdTime++;
 
@@ -31,6 +31,7 @@ public class CameraMover : MonoBehaviour
         {
             _holdTime = 0;
 
+            // Detect start drag pos
             if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out var hit, 5000, 1 << LayerMask.NameToLayer("Movement")))
             {
                 _clicked = true;
@@ -39,6 +40,7 @@ public class CameraMover : MonoBehaviour
             }
         }
 
+        // Drag
         if (_clicked && _holdTime > HoldDelay)
         {
             if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out var hit, 5000, 1 << LayerMask.NameToLayer("Movement")))
@@ -49,10 +51,14 @@ public class CameraMover : MonoBehaviour
                 var newPos = transform.position - offset;
                 newPos.y = _cameraStartDragPosition.y;
 
+                newPos.x = Mathf.Clamp(newPos.x, MinPos.position.x, MaxPos.position.x);
+                newPos.z = Mathf.Clamp(newPos.z, MinPos.position.z, MaxPos.position.z);
+
                 transform.position = newPos;
             }
         }
 
+        // End drag
         if (Input.GetMouseButtonUp(0))
         {
             _clicked = false;
