@@ -23,6 +23,7 @@ public class TrafficLight : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            // Click must be not so long
             if (_clickTime < HoldDelay)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
