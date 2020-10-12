@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ScriptableObjectArchitecture;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,21 +8,35 @@ public class TrafficLight : MonoBehaviour
     public GameObject ZStop;
     public GameObject XStop;
 
+    public IntVariable HoldDelay;
+
+    private int _clickTime = 0;
+
     public void Update()
     {
+        _clickTime++;
+
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _clickTime = 0;
+        }
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 5000f, 1 << LayerMask.NameToLayer("TrafficLight")))
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (_clickTime < HoldDelay)
             {
-                Transform objectHit = hit.transform;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (objectHit.Equals(transform))
+                if (Physics.Raycast(ray, out RaycastHit hit, 5000f, 1 << LayerMask.NameToLayer("TrafficLight")))
                 {
-                    var zActive = ZStop.activeSelf;
-                    ZStop.SetActive(!zActive);
-                    XStop.SetActive(zActive);
+                    Transform objectHit = hit.transform;
+
+                    if (objectHit.Equals(transform))
+                    {
+                        var zActive = ZStop.activeSelf;
+                        ZStop.SetActive(!zActive);
+                        XStop.SetActive(zActive);
+                    }
                 }
             }
         }

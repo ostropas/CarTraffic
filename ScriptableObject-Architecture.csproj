@@ -189,10 +189,10 @@
     <Compile Include="Assets\SO Architecture\Utility\SOArchitectureBaseObject.cs" />
     <Compile Include="Assets\SO Architecture\Events\Responses\AudioClipUnityEvent.cs" />
     <Compile Include="Assets\SO Architecture\Events\Listeners\Vector3GameEventListener.cs" />
-    <Compile Include="Assets\SO Architecture\Events\Listeners\StringGameEventListener.cs" />
-    <Compile Include="Assets\SO Architecture\References\GameObjectReference.cs" />
-    <Compile Include="Assets\SO Architecture\References\Color32Reference.cs" />
     <Compile Include="Assets\SO Architecture\Events\Responses\Vector3UnityEvent.cs" />
+    <Compile Include="Assets\SO Architecture\References\GameObjectReference.cs" />
+    <Compile Include="Assets\SO Architecture\Events\Listeners\StringGameEventListener.cs" />
+    <Compile Include="Assets\SO Architecture\References\Color32Reference.cs" />
     <Compile Include="Assets\SO Architecture\Collections\FloatCollection.cs" />
     <Compile Include="Assets\SO Architecture\Events\Responses\Vector4UnityEvent.cs" />
     <Compile Include="Assets\SO Architecture\Events\Responses\IntUnityEvent.cs" />
