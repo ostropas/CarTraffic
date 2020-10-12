@@ -58,7 +58,6 @@
     <Compile Include="Assets\Scripts\OffMeshMover.cs" />
     <Compile Include="Assets\Scripts\TitleScript.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\WayPointSystem.cs" />
     <Compile Include="Assets\Scripts\WayPoint.cs" />
     <Compile Include="Assets\Scripts\DataManager.cs" />
     <Compile Include="Assets\Scripts\CarSpawner.cs" />
@@ -70,6 +69,7 @@
     <Compile Include="Assets\Scripts\Utils\LinqExtensions.cs" />
     <Compile Include="Assets\ArchitectureExtensions\Collections\VaribleCollection.cs" />
     <Compile Include="Assets\Scripts\CameraMover.cs" />
+    <Compile Include="Assets\Scripts\ColliderCount.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

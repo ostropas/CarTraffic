@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using static WayPointSystem;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class CarMovement : MonoBehaviour

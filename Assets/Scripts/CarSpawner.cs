@@ -1,18 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
+using Assets.Scripts.Utils;
 
+[RequireComponent(typeof(ColliderCount))]
 public class CarSpawner : MonoBehaviour
 {
-    public WayPointSystem Wps;
-    public WayPoint GenerateAtPoint;
+    public List<Transform> GenerateAtPoints;
+    public GameObjectCollection AvailableCarPrefabs;
+
     public float FirstCarDelay;
-    public float GenerateDelay;
+    public float SpawnDelay;
     public float CarsCount;
 
-    // Update is called once per frame
+    private int _carsSpawned;
+    private float _currentTime;
+    private float _prevSpawnCarTime = float.MinValue;
+    private ColliderCount _colliderCount;
+
+    public void Start()
+    {
+        _currentTime = 0;
+        _colliderCount = GetComponent<ColliderCount>();
+    }
+
     void Update()
     {
-        
+        if (FirstCarDelay > _currentTime)
+            return;
+
+        // If spawned enough cars
+        if (_carsSpawned >= CarsCount)
+            return;
+
+        // If not enough space to spawn car
+        if (_colliderCount.Collisions.Count >= 1)
+            return;
+
+        if (_prevSpawnCarTime < _currentTime - SpawnDelay)
+        {
+            GenerateCar();
+            _prevSpawnCarTime = _currentTime;
+            _carsSpawned++;
+        }
+
+        _currentTime += Time.deltaTime;
+    }
+
+    private void GenerateCar()
+    {
+        var carPrefab = AvailableCarPrefabs.GetRandomElement();
+        var spawnPos = GenerateAtPoints.GetRandomElement();
+
+        var car = Instantiate(carPrefab, spawnPos.position, spawnPos.rotation);
     }
 }
