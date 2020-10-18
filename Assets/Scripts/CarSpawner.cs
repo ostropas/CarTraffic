@@ -34,6 +34,11 @@ public class CarSpawner : MonoBehaviour
         CarSpawners.Add(gameObject);
     }
 
+    public void OnDisable()
+    {
+        CarSpawners.Remove(gameObject);
+    }
+
     void Update()
     {
         _currentTime += Time.deltaTime;

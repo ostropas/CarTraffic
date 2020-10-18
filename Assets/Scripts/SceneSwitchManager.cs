@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneSwitchManager : MonoBehaviour, IGameEventListener
+public class SceneSwitchManager : MonoBehaviour, IGameEventListener<bool>
 {
     #region Initialization
     #endregion
@@ -12,7 +12,7 @@ public class SceneSwitchManager : MonoBehaviour, IGameEventListener
     #region Public Fields
     public SceneCollection Scenes;
     public IntVariable CurrentScene;
-    public GameEvent GameFinished;
+    public BoolGameEvent GameFinished;
     public Animator CrossSceneAnimator;
     public bool ShowLoading;
     #endregion
@@ -24,8 +24,17 @@ public class SceneSwitchManager : MonoBehaviour, IGameEventListener
     #region Public Methods
     public void LoadScene(int sceneIndex)
     {
-        _loadingSceneIndex = sceneIndex;
-        CrossSceneAnimator.SetTrigger("StartLoading");
+        StartCoroutine(Delay(1, () =>
+        {
+            _loadingSceneIndex = sceneIndex;
+            CrossSceneAnimator.SetTrigger("StartLoading");
+        }));
+    }
+
+    private IEnumerator Delay(float time, System.Action callback)
+    {
+        yield return new WaitForSeconds(time);
+        callback.Invoke();
     }
 
     public void StartLoadScene()
@@ -49,7 +58,7 @@ public class SceneSwitchManager : MonoBehaviour, IGameEventListener
 
     public void OnDestroy()
     {
-        GameFinished.AddListener(this);
+        GameFinished.RemoveListener(this);
     }
 
     private IEnumerator LoadYourAsyncScene(string sceneName)
@@ -64,8 +73,13 @@ public class SceneSwitchManager : MonoBehaviour, IGameEventListener
         CrossSceneAnimator.SetTrigger("StartLoading");
     }
 
-    public void OnEventRaised()
+    public void OnEventRaised(bool complete)
     {
+        if (CurrentScene.Value >= Scenes.Count)
+        {
+            CurrentScene.Value = 1;
+        }
+
         LoadScene(CurrentScene.Value);
     }
     #endregion

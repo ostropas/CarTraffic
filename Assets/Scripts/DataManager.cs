@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour, IGameEventListener
 #if UNITY_EDITOR
     private void ModeChanged(PlayModeStateChange playMode)
     {
-        if (playMode == PlayModeStateChange.ExitingPlayMode)
+        if (playMode == PlayModeStateChange.ExitingPlayMode && SaveData)
         {
             for (int i = 0; i < PlayerData.Count; i++)
             {
@@ -77,7 +77,8 @@ public class DataManager : MonoBehaviour, IGameEventListener
         }
         else
         {
-            SaveVarible(variable);
+            if (SaveData)
+                SaveVarible(variable);
         }
 
         variable.AddListener(this);

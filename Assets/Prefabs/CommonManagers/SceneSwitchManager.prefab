@@ -121,9 +121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scenes: {fileID: 11400000, guid: 28a30e27711ecfd4cafb7d562e447dd7, type: 2}
   CurrentScene: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4, type: 2}
-  GameFinished: {fileID: 11400000, guid: e83943b0e95d4f646bc2f0c43da1efbf, type: 2}
+  GameFinished: {fileID: 11400000, guid: aa2e8bf0586ecf049a87450965544870, type: 2}
   CrossSceneAnimator: {fileID: 2767999422247756626}
-  ShowLoading: 0
+  ShowLoading: 1
 --- !u!1 &3265530541643723577
 GameObject:
   m_ObjectHideFlags: 0
