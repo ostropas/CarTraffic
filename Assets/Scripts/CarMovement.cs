@@ -34,6 +34,8 @@ public class CarMovement : MonoBehaviour
     public bool IsMoving;
     public IntVariable CurrentScene;
     public WaypointCollection Waypoints;
+    public GameObjectCollection InstantiatedCars;
+    public GameEvent CrashEvent;
     #endregion
 
     #region Private Fields
@@ -43,12 +45,16 @@ public class CarMovement : MonoBehaviour
     private bool _isPathComplete;
     #endregion
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        CrashEvent.Raise();
+    }
+
+    #region Public Methods
     public void SetDestination(Vector3 destination)
     {
         _destination = destination;
     }
-
-    #region Public Methods
     public void ObjectDetected(bool isDetected)
     {
         IsMoving = !isDetected;
@@ -57,6 +63,16 @@ public class CarMovement : MonoBehaviour
     #endregion
 
     #region Private Methods
+    private void OnEnable()
+    {
+        InstantiatedCars.Add(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        InstantiatedCars.Remove(gameObject);
+    }
+
     private void Update()
     {
         if (PathComplete())

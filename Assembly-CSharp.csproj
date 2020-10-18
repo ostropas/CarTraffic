@@ -63,13 +63,14 @@
     <Compile Include="Assets\Scripts\CarSpawner.cs" />
     <Compile Include="Assets\Scripts\CarMovement.cs" />
     <Compile Include="Assets\Scripts\TrafficLight.cs" />
+    <Compile Include="Assets\Scripts\ColliderCount.cs" />
     <Compile Include="Assets\Scripts\CarSight.cs" />
     <Compile Include="Assets\ArchitectureExtensions\Collections\WaypointCollection.cs" />
+    <Compile Include="Assets\Scripts\CameraMover.cs" />
     <Compile Include="Assets\Scripts\SceneSwitchManager.cs" />
     <Compile Include="Assets\Scripts\Utils\LinqExtensions.cs" />
     <Compile Include="Assets\ArchitectureExtensions\Collections\VaribleCollection.cs" />
-    <Compile Include="Assets\Scripts\CameraMover.cs" />
-    <Compile Include="Assets\Scripts\ColliderCount.cs" />
+    <Compile Include="Assets\Scripts\LevelStatusChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

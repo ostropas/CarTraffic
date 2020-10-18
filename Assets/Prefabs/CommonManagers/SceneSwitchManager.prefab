@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scenes: {fileID: 11400000, guid: 28a30e27711ecfd4cafb7d562e447dd7, type: 2}
-  CurrentScene: {fileID: 0}
+  CurrentScene: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4, type: 2}

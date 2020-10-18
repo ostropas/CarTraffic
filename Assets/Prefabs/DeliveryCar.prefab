@@ -119,6 +119,8 @@ MonoBehaviour:
   IsMoving: 1
   CurrentScene: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4, type: 2}
   Waypoints: {fileID: 11400000, guid: 11f86e861a13b3744ae88c132a48ac1e, type: 2}
+  InstantiatedCars: {fileID: 11400000, guid: d1282d972b40b034387ccef692809804, type: 2}
+  CrashEvent: {fileID: 11400000, guid: cf872aac11ec4d841af77096569bd3e6, type: 2}
 --- !u!65 &1959916495448332171
 BoxCollider:
   m_ObjectHideFlags: 0

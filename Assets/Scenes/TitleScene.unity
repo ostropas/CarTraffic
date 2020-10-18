@@ -616,12 +616,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSwitchManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2767999422781182765, guid: cf3fc10acc2130045af71eb0f90ec58b,
-        type: 3}
-      propertyPath: CurrentScene
-      value: 
-      objectReference: {fileID: 11400000, guid: c39e51ae4fc6a33498180a904003cba4,
-        type: 2}
     - target: {fileID: 2767999422781182766, guid: cf3fc10acc2130045af71eb0f90ec58b,
         type: 3}
       propertyPath: m_LocalPosition.x

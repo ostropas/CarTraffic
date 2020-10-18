@@ -11,6 +11,7 @@ public class CarSpawner : MonoBehaviour
     public List<Transform> GenerateAtPoints;
     public GameObjectCollection AvailableCarPrefabs;
     public WaypointCollection Waypoints;
+    public GameObjectCollection CarSpawners;
 
     public float FirstCarDelay;
     public float SpawnDelay;
@@ -27,6 +28,11 @@ public class CarSpawner : MonoBehaviour
         _colliderCount = GetComponent<ColliderCount>();
     }
 
+    public void OnEnable()
+    {
+        CarSpawners.Add(gameObject);
+    }
+
     void Update()
     {
         if (FirstCarDelay > _currentTime)
@@ -34,7 +40,10 @@ public class CarSpawner : MonoBehaviour
 
         // If spawned enough cars
         if (_carsSpawned >= CarsCount)
+        {
+            CarSpawners.Remove(gameObject);
             return;
+        }
 
         // If not enough space to spawn car
         if (_colliderCount.Collisions.Count >= 1)

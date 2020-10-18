@@ -83,9 +83,10 @@ MonoBehaviour:
   AvailableCarPrefabs: {fileID: 11400000, guid: 1a6b8e447e2626c46bd1f90ee68462b9,
     type: 2}
   Waypoints: {fileID: 11400000, guid: 11f86e861a13b3744ae88c132a48ac1e, type: 2}
+  CarSpawners: {fileID: 11400000, guid: 2f24b28ab08dc404e8565c6520901820, type: 2}
   FirstCarDelay: 0
   SpawnDelay: 2
-  CarsCount: 20
+  CarsCount: 1
 --- !u!65 &7790103306854421543
 BoxCollider:
   m_ObjectHideFlags: 0
