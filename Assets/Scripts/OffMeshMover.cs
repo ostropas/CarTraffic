@@ -24,7 +24,7 @@ public class OffMeshMover : MonoBehaviour
         }
     }
 
-
+    // Move around nav mesh link just like on road
     IEnumerator MoveAcrossNavMeshLink()
     {
         OffMeshLinkData data = _navMeshAgent.currentOffMeshLinkData;

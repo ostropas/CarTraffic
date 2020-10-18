@@ -38,6 +38,7 @@ public class DataManager : MonoBehaviour, IGameEventListener
     }
 
 #if UNITY_EDITOR
+    // If exit playing mode in editor, than restore defaul values
     private void ModeChanged(PlayModeStateChange playMode)
     {
         if (playMode == PlayModeStateChange.ExitingPlayMode)
