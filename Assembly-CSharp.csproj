@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Utils\LinqExtensions.cs" />
     <Compile Include="Assets\ArchitectureExtensions\Collections\VaribleCollection.cs" />
     <Compile Include="Assets\Scripts\LevelStatusChecker.cs" />
+    <Compile Include="Assets\Scripts\AnimationEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

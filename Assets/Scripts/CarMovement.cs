@@ -47,7 +47,8 @@ public class CarMovement : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        CrashEvent.Raise();
+        if (collision.collider.CompareTag("Car"))
+            CrashEvent.Raise();
     }
 
     #region Public Methods

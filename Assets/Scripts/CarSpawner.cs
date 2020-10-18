@@ -21,6 +21,7 @@ public class CarSpawner : MonoBehaviour
     private float _currentTime;
     private float _prevSpawnCarTime = float.MinValue;
     private ColliderCount _colliderCount;
+    private bool _gameFinished = false;
 
     public void Start()
     {
@@ -35,6 +36,11 @@ public class CarSpawner : MonoBehaviour
 
     void Update()
     {
+        _currentTime += Time.deltaTime;
+
+        if (_gameFinished)
+            return;
+
         if (FirstCarDelay > _currentTime)
             return;
 
@@ -55,8 +61,6 @@ public class CarSpawner : MonoBehaviour
             _prevSpawnCarTime = _currentTime;
             _carsSpawned++;
         }
-
-        _currentTime += Time.deltaTime;
     }
 
     private void GenerateCar()
@@ -72,5 +76,10 @@ public class CarSpawner : MonoBehaviour
             .GetRandomElement();
 
         car.SetDestination(point.transform.position);
+    }
+
+    public void OnGameFinished()
+    {
+        _gameFinished = true;
     }
 }

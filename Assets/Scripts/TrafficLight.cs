@@ -7,6 +7,7 @@ public class TrafficLight : MonoBehaviour
 {
     public GameObject ZStop;
     public GameObject XStop;
+    public UnityEngine.Events.UnityEvent OnClick;
 
     public enum EnabledLight
     {
@@ -18,6 +19,7 @@ public class TrafficLight : MonoBehaviour
     public List<SpriteRenderer> XLights;
 
     public IntVariable HoldDelay;
+    public bool SwitchOnStart = true;
 
     private int _clickTime = 0;
 
@@ -25,7 +27,8 @@ public class TrafficLight : MonoBehaviour
 
     public void Awake()
     {
-        SwitchStop(true, EnabledLight.Random); 
+        if (SwitchOnStart)
+            SwitchStop(true, EnabledLight.Random); 
     }
 
     public void Update()
@@ -50,6 +53,7 @@ public class TrafficLight : MonoBehaviour
 
                     if (objectHit.Equals(transform) && _trafficSwitched)
                     {
+                        OnClick.Invoke();
                         SwitchStop(false, EnabledLight.Invert);
                     }
                 }

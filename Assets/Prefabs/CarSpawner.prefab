@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7790103306854421538}
   - component: {fileID: 7790103306854421543}
   - component: {fileID: 7790103306854421540}
+  - component: {fileID: 6389944181872399081}
   m_Layer: 0
   m_Name: CarSpawner
   m_TagString: Untagged
@@ -84,9 +85,9 @@ MonoBehaviour:
     type: 2}
   Waypoints: {fileID: 11400000, guid: 11f86e861a13b3744ae88c132a48ac1e, type: 2}
   CarSpawners: {fileID: 11400000, guid: 2f24b28ab08dc404e8565c6520901820, type: 2}
-  FirstCarDelay: 0
+  FirstCarDelay: 1
   SpawnDelay: 2
-  CarsCount: 1
+  CarsCount: 5
 --- !u!65 &7790103306854421543
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,6 +113,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cbbdc188b30a54cb4d82a661411f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6389944181872399081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7790103306854421539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: e83943b0e95d4f646bc2f0c43da1efbf, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7790103306854421538}
+        m_TargetAssemblyTypeName: CarSpawner, Assembly-CSharp
+        m_MethodName: OnGameFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7790103307809918412
 GameObject:
   m_ObjectHideFlags: 0

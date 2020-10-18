@@ -9,6 +9,7 @@ public class LevelStatusChecker : MonoBehaviour
     public GameObjectCollection InstantiatedCars;
     public GameObjectCollection ActiveSpawners;
     public GameEvent CrashEvent;
+    public GameEvent LevelFinished;
 
     private void Awake()
     {
@@ -18,6 +19,9 @@ public class LevelStatusChecker : MonoBehaviour
     private void FailGame()
     {
         _isFail = true;
+
+        Debug.Log("Fail");
+        LevelFinished.Raise();
     }
 
     private bool _isComplete;
@@ -31,14 +35,9 @@ public class LevelStatusChecker : MonoBehaviour
 
         if (_isComplete)
         {
+            CurrentLevel.Value++;
             Debug.Log("Complete");
-            return;
-        }
-
-        if (_isFail)
-        {
-            Debug.Log("Fail");
-            return;
+            LevelFinished.Raise();
         }
     }
 

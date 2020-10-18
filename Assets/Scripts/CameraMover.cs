@@ -15,6 +15,12 @@ public class CameraMover : MonoBehaviour
 
     private int _holdTime;
     private bool _clicked;
+    private bool _isBlock;
+
+    public void GameFinished()
+    {
+        _isBlock = true;
+    }
 
     public void Awake()
     {
@@ -23,6 +29,9 @@ public class CameraMover : MonoBehaviour
 
     public void Update()
     {
+        if (_isBlock)
+            return;
+
         // Delay before start drag
         if (_clicked)
             _holdTime++;
