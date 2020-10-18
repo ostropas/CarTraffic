@@ -16,18 +16,12 @@ public class CarSight : MonoBehaviour
 
     public UnityEvent<bool> ObjectInView;
 
-    private GameObject _objectInView = null;
-
     public float ViewDistance = 10f;
     public float ViewOffset = 1f;
 
     public List<ViewParam> ViewRays;
 
-    private void Awake()
-    {
-        //TrafficLightDetected = new Action<TrafficLight>()
-    }
-
+    private bool _objectInView = false;
 
     private void Update()
     {
@@ -37,6 +31,7 @@ public class CarSight : MonoBehaviour
     //Detect perspective field of view for the AI Character
     void DetectObjects()
     {
+        // Calc rays based on rays params
         var rays = ViewRays.Select(x =>
         {
             var view = Quaternion.Euler(0, x.Angle, 0) * transform.forward;
@@ -58,11 +53,19 @@ public class CarSight : MonoBehaviour
                 if (hit.collider.isTrigger)
                     continue;
 
-                ObjectInView.Invoke(true);
+                if (!_objectInView)
+                {
+                    _objectInView = true;
+                    ObjectInView.Invoke(true);
+                }
                 return;
             } 
         }
 
-        ObjectInView.Invoke(false);
+        if (_objectInView)
+        {
+            _objectInView = false;
+            ObjectInView.Invoke(false);
+        }
     }
 }

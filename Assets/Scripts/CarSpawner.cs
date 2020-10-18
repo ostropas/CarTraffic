@@ -23,6 +23,10 @@ public class CarSpawner : MonoBehaviour
     private ColliderCount _colliderCount;
     private bool _gameFinished = false;
 
+    public float MinCarWaitTime = 5;
+    public float MaxCarWaitTime = 10;
+    public float SpeedMultily = 1;
+
     public void Start()
     {
         _currentTime = 0;
@@ -73,14 +77,21 @@ public class CarSpawner : MonoBehaviour
         var carPrefab = AvailableCarPrefabs.GetRandomElement();
         var spawnPos = GenerateAtPoints.GetRandomElement();
 
+        // Select random far point
+        var points = Waypoints
+            .Where(x => x.IsFinish && Vector3.Distance(transform.position, x.transform.position) > 20f);
+
+        if (points.Count() == 0)
+            throw new System.Exception("Not found far points");
+
+        var point = points.GetRandomElement();
+
+
         var car = Instantiate(carPrefab, spawnPos.position, spawnPos.rotation).GetComponent<CarMovement>();
 
-        // Select random far point
-        var point = Waypoints
-            .Where(x => x.IsFinish && Vector3.Distance(transform.position, x.transform.position) > 20f)
-            .GetRandomElement();
-
+        car.SetMinMaxWaitTime(MinCarWaitTime, MaxCarWaitTime);
         car.SetDestination(point.transform.position);
+        car.SetSpeedMultiply(SpeedMultily);
     }
 
     public void OnGameFinished()

@@ -57,9 +57,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\OffMeshMover.cs" />
     <Compile Include="Assets\Scripts\TitleScript.cs" />
+    <Compile Include="Assets\Scripts\FInishScreenScript.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\LevelStatusChecker.cs" />
     <Compile Include="Assets\Scripts\WayPoint.cs" />
     <Compile Include="Assets\Scripts\DataManager.cs" />
+    <Compile Include="Assets\Scripts\AnimationEventHandler.cs" />
     <Compile Include="Assets\Scripts\CarSpawner.cs" />
     <Compile Include="Assets\Scripts\CarMovement.cs" />
     <Compile Include="Assets\Scripts\TrafficLight.cs" />
@@ -70,9 +73,7 @@
     <Compile Include="Assets\Scripts\SceneSwitchManager.cs" />
     <Compile Include="Assets\Scripts\Utils\LinqExtensions.cs" />
     <Compile Include="Assets\ArchitectureExtensions\Collections\VaribleCollection.cs" />
-    <Compile Include="Assets\Scripts\LevelStatusChecker.cs" />
-    <Compile Include="Assets\Scripts\AnimationEventHandler.cs" />
-    <Compile Include="Assets\Scripts\FInishScreenScript.cs" />
+    <Compile Include="Assets\Scripts\Utils\MonoBehaviorUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

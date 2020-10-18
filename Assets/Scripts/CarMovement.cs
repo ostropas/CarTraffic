@@ -15,6 +15,7 @@ public class CarMovement : MonoBehaviour
     public IEnumerator Start()
     {
         _nva = GetComponent<NavMeshAgent>();
+        _nva.speed *= _speedMul;
         _nvaAngularSpeed = _nva.angularSpeed;
         float t = 0;
         while (t < 1)
@@ -43,6 +44,9 @@ public class CarMovement : MonoBehaviour
     private float _nvaAngularSpeed;
     private Vector3? _destination;
     private bool _isPathComplete;
+    private Coroutine _waitCoroutine;
+    private System.Tuple<float, float> _minMaxWaitTime;
+    private float _speedMul;
     #endregion
 
     public void OnCollisionEnter(Collision collision)
@@ -56,10 +60,21 @@ public class CarMovement : MonoBehaviour
     {
         _destination = destination;
     }
+
+    public void SetSpeedMultiply(float speed)
+    {
+        _speedMul = speed;
+    }
+
     public void ObjectDetected(bool isDetected)
     {
         IsMoving = !isDetected;
         PauseMovement(!IsMoving);
+    }
+
+    public void SetMinMaxWaitTime(float min, float max)
+    {
+        _minMaxWaitTime = new System.Tuple<float, float>(min, max);
     }
     #endregion
 
@@ -98,6 +113,10 @@ public class CarMovement : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Pause nav mesh agent movement
+    /// </summary>
+    /// <param name="isPaused"></param>
     private void PauseMovement(bool isPaused)
     {
         if (_isPathComplete)
@@ -105,17 +124,44 @@ public class CarMovement : MonoBehaviour
 
         if (isPaused)
         {
+            StartWaitTimer();
             _nva.isStopped = true;
             _nva.velocity = Vector3.zero;
             _nva.angularSpeed = 0;
         }
         else
         {
+            StopWaitTimer();
             _nva.angularSpeed = _nvaAngularSpeed;
             _nva.isStopped = false;
         }
     }
 
+    private void StartWaitTimer()
+    {
+        StopWaitTimer();
+
+        float time = Random.Range(_minMaxWaitTime.Item1, _minMaxWaitTime.Item2);
+
+        _waitCoroutine = this.Delay(time, () =>
+        {
+            PauseMovement(false);
+        });
+    }
+
+    private void StopWaitTimer()
+    {
+        if (_waitCoroutine != null)
+        {
+            StopCoroutine(_waitCoroutine);
+            _waitCoroutine = null;
+        }
+    }
+
+    /// <summary>
+    /// Check is destination reached
+    /// </summary>
+    /// <returns>reached or not</returns>
     private bool PathComplete()
     {
         if (Vector3.Distance(_destination.Value, _nva.transform.position) <= 1f)

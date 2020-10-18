@@ -24,17 +24,11 @@ public class SceneSwitchManager : MonoBehaviour, IGameEventListener<bool>
     #region Public Methods
     public void LoadScene(int sceneIndex)
     {
-        StartCoroutine(Delay(1, () =>
+        this.Delay(1, () =>
         {
             _loadingSceneIndex = sceneIndex;
             CrossSceneAnimator.SetTrigger("StartLoading");
-        }));
-    }
-
-    private IEnumerator Delay(float time, System.Action callback)
-    {
-        yield return new WaitForSeconds(time);
-        callback.Invoke();
+        });
     }
 
     public void StartLoadScene()
@@ -48,7 +42,7 @@ public class SceneSwitchManager : MonoBehaviour, IGameEventListener<bool>
     public void Awake()
     {
         if (ShowLoading)
-        CrossSceneAnimator.SetTrigger("FinishLoading");
+            CrossSceneAnimator.SetTrigger("FinishLoading");
     }
 
     public void Start()
