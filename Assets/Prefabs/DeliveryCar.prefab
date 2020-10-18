@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1816619684028501923
 Transform:
   m_ObjectHideFlags: 0
@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459395002761777761}
-  m_LocalRotation: {x: 0, y: 0.34145424, z: 0, w: 0.93989843}
+  m_LocalRotation: {x: 0, y: 0.2164396, z: 0, w: 0.97629607}
   m_LocalPosition: {x: 0.4, y: 0, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1186932731042336046}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 39.931, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 25, z: 0}
 --- !u!114 &6652518749243696383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,8 +58,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ViewDistance: 1
+  ViewDistance: 0.5
   ViewOffset: 1
+  ViewRays: []
 --- !u!1 &1959916495448332180
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +195,17 @@ MonoBehaviour:
         m_CallState: 2
   ViewDistance: 1
   ViewOffset: 1.79
+  ViewRays:
+  - Angle: 0
+    Offset: 0
+  - Angle: 15
+    Offset: 0.3
+  - Angle: 35
+    Offset: 0.7
+  - Angle: -15
+    Offset: -0.3
+  - Angle: -35
+    Offset: -0.7
 --- !u!54 &4519359237936597154
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -478,7 +490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7382669453897485784
 Transform:
   m_ObjectHideFlags: 0
@@ -486,13 +498,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6919476063379125352}
-  m_LocalRotation: {x: -0, y: -0.34145233, z: -0, w: 0.93989915}
+  m_LocalRotation: {x: 0, y: -0.21643952, z: 0, w: 0.97629607}
   m_LocalPosition: {x: -0.357, y: 0, z: 0.756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1186932731042336046}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -39.931, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -25, z: 0}
 --- !u!114 &6080239317896718244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,8 +532,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ViewDistance: 1
+  ViewDistance: 0.5
   ViewOffset: 1
+  ViewRays: []
 --- !u!1 &8826100964702245024
 GameObject:
   m_ObjectHideFlags: 0

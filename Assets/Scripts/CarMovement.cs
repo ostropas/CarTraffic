@@ -10,11 +10,25 @@ using UnityEngine.AI;
 public class CarMovement : MonoBehaviour
 {
     #region Initialization
-    void Awake()
+    #endregion
+
+    public IEnumerator Start()
     {
         _nva = GetComponent<NavMeshAgent>();
+        _nvaAngularSpeed = _nva.angularSpeed;
+        float t = 0;
+        while (t < 1)
+        {
+            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
+            t += Time.deltaTime * 5;
+            yield return null;
+        }
+
+        transform.localScale = Vector3.one;
+
+        if (_destination.HasValue)
+            _nva.SetDestination(_destination.Value);
     }
-    #endregion
 
     #region Public Fields
     public bool IsMoving;
@@ -23,41 +37,76 @@ public class CarMovement : MonoBehaviour
     #endregion
 
     #region Private Fields
-    private Vector3 _destination;
     private NavMeshAgent _nva;
+    private float _nvaAngularSpeed;
+    private Vector3? _destination;
+    private bool _isPathComplete;
     #endregion
 
-
-    void Start()
+    public void SetDestination(Vector3 destination)
     {
-        var point = Waypoints
-            .Where(x => x.IsFinish && Vector3.Distance(transform.position, x.transform.position) > 20f)
-            .GetRandomElement();
-        _nva.SetDestination(point.transform.position);
-        _destination = point.transform.position;
+        _destination = destination;
     }
 
     #region Public Methods
-    public void ObjectDetected(GameObject go)
+    public void ObjectDetected(bool isDetected)
     {
-        IsMoving = go == null;
+        IsMoving = !isDetected;
         PauseMovement(!IsMoving);
     }
     #endregion
 
     #region Private Methods
+    private void Update()
+    {
+        if (PathComplete())
+        {
+            PauseMovement(true);
+            _isPathComplete = true;
+
+            StartCoroutine(DestroyCoroutine());
+        }
+    }
+
+    private IEnumerator DestroyCoroutine()
+    {
+        float t = 0;
+        while (t < 1)
+        {
+            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+            t += Time.deltaTime * 5;
+            yield return null;
+        }
+
+        Destroy(gameObject);
+    }
+
     private void PauseMovement(bool isPaused)
     {
+        if (_isPathComplete)
+            return;
+
         if (isPaused)
         {
             _nva.isStopped = true;
             _nva.velocity = Vector3.zero;
-        } else
-        {
-            _nva.isStopped = false;
-            //var m = 9;
-            //_nva.SetDestination(_destination);
+            _nva.angularSpeed = 0;
         }
+        else
+        {
+            _nva.angularSpeed = _nvaAngularSpeed;
+            _nva.isStopped = false;
+        }
+    }
+
+    private bool PathComplete()
+    {
+        if (Vector3.Distance(_destination.Value, _nva.transform.position) <= 1f)
+        {
+            return true;
+        }
+
+        return false;
     }
     #endregion
 }

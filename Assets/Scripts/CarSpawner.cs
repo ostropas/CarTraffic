@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 using Assets.Scripts.Utils;
+using System.Linq;
 
 [RequireComponent(typeof(ColliderCount))]
 public class CarSpawner : MonoBehaviour
 {
     public List<Transform> GenerateAtPoints;
     public GameObjectCollection AvailableCarPrefabs;
+    public WaypointCollection Waypoints;
 
     public float FirstCarDelay;
     public float SpawnDelay;
@@ -53,6 +55,13 @@ public class CarSpawner : MonoBehaviour
         var carPrefab = AvailableCarPrefabs.GetRandomElement();
         var spawnPos = GenerateAtPoints.GetRandomElement();
 
-        var car = Instantiate(carPrefab, spawnPos.position, spawnPos.rotation);
+        var car = Instantiate(carPrefab, spawnPos.position, spawnPos.rotation).GetComponent<CarMovement>();
+
+        // Select random far point
+        var point = Waypoints
+            .Where(x => x.IsFinish && Vector3.Distance(transform.position, x.transform.position) > 20f)
+            .GetRandomElement();
+
+        car.SetDestination(point.transform.position);
     }
 }
