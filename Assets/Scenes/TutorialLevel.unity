@@ -171,7 +171,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &164639618
 GameObject:
@@ -2055,7 +2055,7 @@ PrefabInstance:
     - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
         type: 3}
@@ -2125,6 +2125,36 @@ PrefabInstance:
     - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 390096828}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7158645933657382516, guid: b4b2cd18bb930d14faa4971b738efa83,

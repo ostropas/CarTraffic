@@ -138,12 +138,12 @@ PrefabInstance:
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpawnDelay
-      value: 8
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: CarsCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
@@ -154,6 +154,16 @@ PrefabInstance:
         type: 3}
       propertyPath: SpeedMultily
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MinCarWaitTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MaxCarWaitTime
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421539, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
@@ -1194,7 +1204,7 @@ PrefabInstance:
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: CarsCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
@@ -1204,12 +1214,22 @@ PrefabInstance:
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpawnDelay
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpeedMultily
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MinCarWaitTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MaxCarWaitTime
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421539, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
@@ -1485,8 +1505,9 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: aa2e8bf0586ecf049a87450965544870,
+    type: 2}
+  _event: {fileID: 11400000, guid: aa2e8bf0586ecf049a87450965544870, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
@@ -1611,22 +1632,32 @@ PrefabInstance:
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpawnDelay
-      value: 7
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: CarsCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: FirstCarDelay
-      value: 0.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpeedMultily
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MinCarWaitTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MaxCarWaitTime
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421539, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
@@ -2234,22 +2265,32 @@ PrefabInstance:
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpawnDelay
-      value: 8
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: CarsCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: FirstCarDelay
-      value: 1.3
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpeedMultily
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MinCarWaitTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MaxCarWaitTime
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421539, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
@@ -2363,22 +2404,32 @@ PrefabInstance:
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: CarsCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
-        type: 3}
-      propertyPath: FirstCarDelay
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
+      propertyPath: FirstCarDelay
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
       propertyPath: SpawnDelay
-      value: 5
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpeedMultily
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MinCarWaitTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MaxCarWaitTime
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421539, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
@@ -2782,6 +2833,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1764746204}
     m_Modifications:
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158645932230034618, guid: b4b2cd18bb930d14faa4971b738efa83,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7158645933657382516, guid: b4b2cd18bb930d14faa4971b738efa83,
         type: 3}
       propertyPath: m_Name
@@ -2859,12 +2955,12 @@ PrefabInstance:
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: SpawnDelay
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
       propertyPath: CarsCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}
@@ -2875,6 +2971,16 @@ PrefabInstance:
         type: 3}
       propertyPath: SpeedMultily
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MinCarWaitTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790103306854421538, guid: 9785e9178d7844e4bb56b458bfbb5367,
+        type: 3}
+      propertyPath: MaxCarWaitTime
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7790103306854421539, guid: 9785e9178d7844e4bb56b458bfbb5367,
         type: 3}

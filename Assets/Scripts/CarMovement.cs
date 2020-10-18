@@ -132,8 +132,11 @@ public class CarMovement : MonoBehaviour
         else
         {
             StopWaitTimer();
-            _nva.angularSpeed = _nvaAngularSpeed;
-            _nva.isStopped = false;
+            this.Delay(Random.Range(0f, 1f), () =>
+            {
+                _nva.angularSpeed = _nvaAngularSpeed;
+                _nva.isStopped = false;
+            });
         }
     }
 

@@ -40,13 +40,14 @@ public class DataManager : MonoBehaviour, IGameEventListener
 #if UNITY_EDITOR
     private void ModeChanged(PlayModeStateChange playMode)
     {
-        if (playMode == PlayModeStateChange.ExitingPlayMode && SaveData)
+        if (playMode == PlayModeStateChange.ExitingPlayMode)
         {
             for (int i = 0; i < PlayerData.Count; i++)
             {
                 var data = PlayerData[i];
                 data.RemoveAll();
-                SaveVarible(data);
+                if (SaveData)
+                    SaveVarible(data);
                 data.BaseValue = _baseValues[i].BaseValue;
             }
             Destroy(_baseValues);
